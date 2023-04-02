@@ -1,7 +1,14 @@
+def titulo(texto):
+    print()
+    print(texto)
+
+    
+
 while (True):
 
-    print()
-    print("-"*30)
+    titulo("AvenidaBest - Controle de Aposta")
+    
+    print("="*40)
     print("1. Cadastrar Aposta")
     print("2. Listar Aposta")
     print("3. Listar Resultado")
@@ -9,6 +16,8 @@ while (True):
     print("5. Aposta por Resultado")
     print("6. Resultado e Premiação")
     print("7. Premiação")
+
+    opcao = int(input("Opção: "))
 
 
 
