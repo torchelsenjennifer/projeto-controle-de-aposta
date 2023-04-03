@@ -49,6 +49,15 @@ def listar_resultado():
             apostou = "Grêmio"
         print(f"{nome:30} {apostou}")
 
+def totalizar():
+    titulo("Listagem das Apostas - Caxias x Grêmio")
+    numero_aposta = len(nomes)
+    total_dinheiro = sum(valores)
+    print("Quantidade de Apostador........... Total Apostado")
+    print(f"{numero_aposta} {total_dinheiro:30}")
+    
+
+
 while (True):
     titulo("AvenidaBest - Controle de Aposta\nCaxias x Grêmio (Final do Gauchão 2023)","=")
     print("1. Cadastrar Aposta")
@@ -67,5 +76,7 @@ while (True):
         listar()
     elif opcao == 3:
         listar_resultado()
+    elif opcao == 4:
+        totalizar()
     else:
         break
