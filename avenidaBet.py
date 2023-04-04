@@ -73,6 +73,17 @@ def apostas_resultado():
             gremio = gremio + 1
     print("Caxias.....Empate......Grêmio")
     print(f"{caxias} {empate:30} {gremio:60}")
+
+def premiacao():
+    titulo("Premiação e Resultados - Caxias x Grêmio")
+    campeao = input("Qual foi o time vencedor: ")
+    if(campeao == "Caxias"):
+        for nome, aposta in zip(nomes, apostas):
+            partes = aposta.split("x")
+            if int(partes[0]) > int(partes[1]):
+                print(f"{nome:30}")
+
+
     
     
 
@@ -98,5 +109,7 @@ while (True):
         totalizar()
     elif opcao == 5:
         apostas_resultado()
+    elif opcao == 6:
+        premiacao()
     else:
         break
