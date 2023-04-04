@@ -1,6 +1,32 @@
+import os
+
 nomes = []
 apostas = []
 valores = []
+
+def obter_dados_do_arquivo():
+  # se o arquivo não existe, retorna
+  if not os.path.isfile("apostas.txt"):
+    return
+  
+  # abre o arquivo para leitura
+  with open("apostas.txt", "r") as arq:
+    # lê todas as linhas do arquivo (carregando em um vetor)
+    linhas = arq.readlines()
+
+    for linha in linhas:
+      # separa a linha em elementos de vetor, a cada ";"
+      partes = linha.split(";")
+      nomes.append(partes[0])
+      apostas.append(partes[1])
+      valores.append(float(partes[2][0:-1]))  
+
+def salvar_dados_no_arquivo():
+  # abre o arquivo para gravação (sobrepõe os dados)
+  with open("apostas.txt", "w") as arq:
+    
+    for nome, aposta, valor in zip(nomes, apostas, valores):
+      arq.write(f"{nome};{aposta};{valor}\n")
 
 def titulo(texto, sublinhado="-"):
     print()
@@ -76,16 +102,10 @@ def apostas_resultado():
 
 def premiacao():
     titulo("Premiação e Resultados - Caxias x Grêmio")
-    campeao = input("Qual foi o time vencedor: ")
-    if(campeao == "Caxias"):
-        for nome, aposta in zip(nomes, apostas):
-            partes = aposta.split("x")
-            if int(partes[0]) > int(partes[1]):
-                print(f"{nome:30}")
+    campeao = int(input("Qual o resultado da partida(2x1): "))
+   
 
-
-    
-    
+obter_dados_do_arquivo()
 
 while (True):
     titulo("AvenidaBest - Controle de Aposta\nCaxias x Grêmio (Final do Gauchão 2023)","=")
@@ -112,4 +132,5 @@ while (True):
     elif opcao == 6:
         premiacao()
     else:
+        salvar_dados_no_arquivo()
         break
