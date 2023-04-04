@@ -36,6 +36,7 @@ def listar():
         print(f"{nome:30} {aposta:^7} {valor:9.2f}")
 
 def listar_resultado():
+    
     titulo("Listagem das Apostas - Caxias x Grêmio")
     print("Nome do Apostador...........  Aposta")
 
@@ -56,7 +57,24 @@ def totalizar():
     print("Quantidade de Apostador........... Total Apostado")
     print(f"{numero_aposta} {total_dinheiro:30}")
     
+def apostas_resultado():
+    titulo("Total de aposta em cada Time - Caxias x Grêmio")
+    caxias = 0
+    gremio = 0
+    empate = 0
 
+    for aposta in zip(apostas):
+        partes = aposta.split("x")
+        if int(partes[0]) > int(partes[1]):
+            caxias = caxias + 1
+        elif int(partes[0]) == int(partes[1]):
+            empate = empate + 1
+        else:
+            gremio = gremio + 1
+    print("Caxias.....Empate......Grêmio")
+    print(f"{caxias} {empate:30} {gremio:60}")
+    
+    
 
 while (True):
     titulo("AvenidaBest - Controle de Aposta\nCaxias x Grêmio (Final do Gauchão 2023)","=")
@@ -78,5 +96,7 @@ while (True):
         listar_resultado()
     elif opcao == 4:
         totalizar()
+    elif opcao == 5:
+        apostas_resultado()
     else:
         break
