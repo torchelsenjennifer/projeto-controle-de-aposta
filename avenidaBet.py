@@ -1,8 +1,11 @@
 import os
 
 nomes = []
+
 apostas = []
 valores = []
+vencedores = []
+ganhadores = []
 
 def obter_dados_do_arquivo():
   # se o arquivo não existe, retorna
@@ -102,8 +105,44 @@ def apostas_resultado():
 
 def premiacao():
     titulo("Premiação e Resultados - Caxias x Grêmio")
-    campeao = int(input("Qual o resultado da partida(2x1): "))
+    
+    # Em Resultado e Premiação, receber o resultado da partida e exibir o(s) ganhador(es). Calcular o total 
+    # apostado e o quanto o apostador irá receber.
+
+    # receber o resultado da partida
+    # comparar o que recebeu com cada aposta
+    # calcular o total apostado, somando o quanto a pessoa apostou
+    # armazerar os nomes em um array de ganhadores 
+    # apresentar nomes e quanto ira receber
+
+    resultado = input("Qual o resultado da partida(2x1): ") 
+    # vencedores.append(campeao)
+    # partes = campeao.split("x")
+
+    # print(campeao) # 7x1
+    # print(partes)# ['7', '1']
+    # print(vencedores) # ['7x1']
+    
+    total_apostado = 0
+    total_vencedores = 0
+    for  aposta, nome, valor in zip(apostas, nomes, valores):
+        total_apostado = total_apostado + valor
+        if resultado == aposta:
+            # ganhadores.append(nome) 
+            total_vencedores = total_vencedores + (valor * 2)
+            print(f'O apostador {nome} ganhou {valor*2}')
+
+    # for nome in ganhadores:
+    #     print(nome)
+    print(f"Total apostado: {total_apostado}")
+    print(f"Total pago aos vencedores: {total_vencedores}")
+    print(f"Resultado da banca: {total_apostado - total_vencedores}")
+
    
+
+    
+        
+            
 
 obter_dados_do_arquivo()
 

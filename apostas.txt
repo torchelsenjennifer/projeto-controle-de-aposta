@@ -1,2 +1,4 @@
-jennifer;2x1;10.00
+jennifer;7x1;10.00
 tiago;1x2;15.00
+jonas;7x1;15.00
+jose;3x1;25.00
